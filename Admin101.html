@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="cn" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录页</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/js/jquery-3.6.0.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/plugins/bootstraptable/bootstrap-table.min.css">
+
+    <style>
+
+        body{
+            background-image: url("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jj20.com%2Fup%2Fallimg%2Ftp01%2F1ZZQ233331308-0-lp.jpg&refer=http%3A%2F%2Fimg.jj20.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1643249647&t=e35ab8bf766c460489385be74a99457a");
+            background-size: cover;
+        }
+        *{
+            box-sizing: border-box;
+        }
+        .clear{
+            clear:both;
+        }
+        .section{
+            text-align: center;
+            padding: 10px 10px;
+            margin-bottom: 1px;
+        }
+        .section .card,
+        .section .card1,
+        .section .card4{
+            width: 15%;
+            float: left;
+            padding: 30px 2px;
+        }
+        .section .card{
+            width: 35%;
+        }
+        .section .box{
+            text-align: center;
+            padding: 100px 10px;
+            margin-bottom: 1px;
+        }
+
+        .loginForm{
+            height: 100%;
+
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+            position: relative;
+            padding-top: 40px;
+            background: #fff;
+        }
+        .dxan{
+            padding: 0 0 10px 0;
+        }
+
+
+    </style>
+</head>
+
+<body  >
+
+
+
+<div class="container">
+
+    <section class="section">
+        <div class="content">
+
+            <div class="card1"><div class="box"></div></div>
+            <div class="card"><div class="box"></div></div>
+            <div class="card"><div class="box">
+                <div id="normalLoginTab" class="loginForm" style="display: block;">
+                    <h2 class="loginbox-title">教学信息管理系统</h2>
+
+                    <div class="container-fluid">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">用户登录</div>
+                            <div class="panel-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="username">用户名：</label>
+                                        <input type="text" class="form-control" id="username" name="username" placeholder="用户名">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">密码：</label>
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="密码">
+                                    </div>
+                                    <div class="dxan">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="0" onclick="pd(0)"> 管理员
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="1" onclick="pd(1)"> 教师
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="2" onclick="pd(2)"> 学生
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <button type="button" class="btn btn-primary btn-block"  onclick="login()">登&nbsp;&nbsp;录</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div></div>
+            <div class="card4"><div class="box"></div></div>
+            <div class="clear"></div>
+        </div>
+    </section>
+
+</div>
+
+
+
+
+<script type="text/javascript">
+
+
+    function login() {
+
+        var name=$("#username").val();
+        var password=$("#password").val();
+
+        var radios = document.getElementsByName("inlineRadioOptions");
+        var tag = false;
+        var val;
+        for(inlineRadioOptions in radios) {
+            if(radios[inlineRadioOptions].checked) {
+                tag = true;
+                val = radios[inlineRadioOptions].value;
+                break;
+            }
+        }
+        if(val==0){
+            //管理员
+            if (name=="root" && password=="123")
+            {
+                window.location.href="/teacher/gly";
+            }else{
+                alert("出错了，您的用户名和密码有误");
+            }
+
+        }else if(val==1){
+            //教师
+            $.ajax({
+                url:"/webapi/login/teacher",
+                data:{
+                    username:name,
+                    password:password
+                }
+
+            }).done(function (rs) {
+
+                if (rs>=0){
+                    //成功
+                    window.location.href="/student/list";
+
+                }else{
+                    alert("出错了，您的用户名和密码有误");
+                }
+            });
+
+        }else if(val==2){
+            //学生
+            $.ajax({
+                url:"/webapi/login/user",
+                data:{
+                    username:name,
+                    password:password
+                }
+
+            }).done(function (rs) {
+
+                if (rs>=0){
+                    //成功
+
+                    window.location.href="/score/list?dd="+$("#username").val();
+                }else{
+                    alert("出错了，您的用户名和密码有误");
+                }
+            });
+        }else {
+            //未选择
+            alert("请选择管理员/教师/学生！！！");
+        }
+     
+    }
+
+</script>
+
+</body>
+</html>
