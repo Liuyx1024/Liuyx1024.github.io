@@ -72,32 +72,25 @@
             <div class="card"><div class="box"></div></div>
             <div class="card"><div class="box">
                 <div id="normalLoginTab" class="loginForm" style="display: block;">
-                    <h2 class="loginbox-title">教学信息管理系统</h2>
+                    <h2 class="loginbox-title">管理员后端登录系统</h2>
 
                     <div class="container-fluid">
 
                         <div class="panel panel-default">
-                            <div class="panel-heading">用户登录</div>
+                            <div class="panel-heading">管理员登录</div>
                             <div class="panel-body">
                                 <form>
                                     <div class="form-group">
-                                        <label for="username">用户名：</label>
-                                        <input type="text" class="form-control" id="username" name="username" placeholder="用户名">
+                                        <label for="username">管理员名字：</label>
+                                        <input type="text" class="form-control" id="username" name="username" placeholder="管理员名字">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="username">管理员邮箱：</label>
+                                        <input type="text" class="form-control" id="username" name="username" placeholder="管理员邮箱">
                                     </div>
                                     <div class="form-group">
                                         <label for="password">密码：</label>
                                         <input type="password" class="form-control" id="password" name="password" placeholder="密码">
-                                    </div>
-                                    <div class="dxan">
-                                        <label class="radio-inline">
-                                            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="0" onclick="pd(0)"> 管理员
-                                        </label>
-                                        <label class="radio-inline">
-                                            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="1" onclick="pd(1)"> 教师
-                                        </label>
-                                        <label class="radio-inline">
-                                            <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="2" onclick="pd(2)"> 学生
-                                        </label>
                                     </div>
                                     <div>
                                         <button type="button" class="btn btn-primary btn-block"  onclick="login()">登&nbsp;&nbsp;录</button>
