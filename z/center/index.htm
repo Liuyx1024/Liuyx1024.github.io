@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>中心广场</title>
+  <style  type="text/css">a:hover{TEXT-DECORATION:underline}
+    a {text-decoration:none;}
+    body{background-color:black;}
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    .icon{
+				fill:currentColor;/* 必须加这个,svg标签才能改变颜色 */
+			}
+			
+			#div_dom{
+				display: none;/* 隐藏dom母体 */
+			}
+			
+			div{
+				position: absolute;/* 必须加这个,div才可以设置位置为鼠标点击位置 */
+			}
+			
+			.opacity1 {
+				opacity: 0.6;/* 透明度0.6 */
+			}
+			
+			.opacity2 {
+				opacity: 0.3;
+			}
+#example1
+{
+	border:2px solid #a1a1a1;
+	padding:10px 40px; 
+	background:#dddddd;
+	width:300px;
+	border-radius:25px;
+  
+}
+    #example2 {
+  border: 2px solid white;
+  padding: 10px;
+  border-radius: 50px 20px;
+}
+  </style>
+</head>
+<body>
+  <div id="div_dom">
+			<svg t="1611984899556" class="icon" viewBox="0 0 1169 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1962" width="36.53125" height="32" xmlns:xlink="http://www.w3.org/1999/xlink">
+				<defs>
+					<style type="text/css"></style>
+					</defs>
+				<path d="M1045.333 117.333C919.467-6.4 716.8-10.667 584.533 106.667 452.267-10.667 249.6-6.4 123.733 117.333c-128 128-130.133 337.067-2.133 467.2l4.267 4.267 384 384c40.533 40.533 106.666 42.667 149.333 2.133l2.133-2.133 384-384c128-128 130.134-337.067 4.267-465.067-2.133-4.266-2.133-4.266-4.267-6.4z" p-id="1963">
+			</path>
+			</svg>
+		</div>
+
+  <b><a href="" style="color:white;">>>返回主页</a><a href="" style="color:white;">&nbsp;>>中心广场</a></b>
+  <center>
+    <canvas id="canvas" width="400" height="400" style="background-color:#333"></canvas><script>
+  /*第一部分 - 创建画布*/
+// 通过canvas元素创建一个canvas对象(var canvas):
+let canvas = document.getElementById("canvas");
+//为canvas对象创建一个2D绘图对象(var context)：    
+let context = canvas.getContext("2d");
+//使用画布的高度计算时钟半径：    
+let radius = canvas.height / 2;
+//将（0,0）位置（绘图对象）重新映射到画布的中心：    
+context.translate(radius, radius);
+//减少时钟半径（至90％）以在画布内绘制时钟：    
+radius = radius * 0.90;
+//每隔一秒(1000毫秒)调用一次drawClock()函数    
+setInterval(drawClock, 1000);
+
+//创建一个绘制时钟的函数：    
+function drawClock() {
+    /* 
+    //画一个圆形         
+    context.arc(0, 0, radius, 0, 2 * Math.PI);
+    context.fillStyle = "white";
+    context.fill();*/
+    drawFace(context, radius);
+    drawNumbers(context, radius);
+    drawLine(context, radius);
+    drawTime(context, radius);
+}
+
+/*** 
+第二部分 - 画一个钟面     
+* @param context -2D绘图对象     
+* @param radius -时钟半径     
+*/    
+function drawFace(context, radius) {
+    let gradient;
+    //起始一条路径，或重置当前路径
+    context.beginPath();
+    //画出白色圆圈：        
+    context.arc(0, 0, radius, 0, 2 * Math.PI);
+    //设置或返回用于填充绘画的颜色、渐变或模式        
+    context.fillStyle = "#f2ffe5";
+    //填充当前绘图（路径）       
+    context.fill();
+    //创建径向渐变（原始时钟半径的95％和105％）：        
+    gradient = context.createRadialGradient( 0, 0, radius * 0.95, 0, 0, radius * 1.05  );
+    //创建3个颜色停止点，对应于弧的内边，中边和外边：
+    //颜色停止会产生3D效果        
+    gradient.addColorStop(0, '#333');
+    gradient.addColorStop(0.5, 'white');
+    gradient.addColorStop(1, '#333');
+    //将渐变定义为绘图对象的笔触样式：        
+    context.strokeStyle = gradient;
+    //定义图纸对象的线宽（半径的10％）：        
+    context.lineWidth = radius * 0.1;
+    //画圆圈：        
+    context.stroke();
+    //画时钟中心：        
+    context.beginPath();
+    //创建弧/曲线（用于创建圆形或部分圆）        
+    context.arc(0, 0, radius * 0.06, 0, 2 * Math.PI);
+    context.fillStyle = '#333';
+    context.fill();
+}
+
+/**
+* 第三部分 - 绘制时钟数     
+* @param context -2D绘图对象     
+* * @param radius -时钟半径     
+*/    
+function drawNumbers(context, radius) {
+    let angle;
+    let num;
+    //将（绘图对象的）字体大小设置为半径的15％：        
+    context.font = radius * 0.15 + "px arial";
+    //设置或返回在绘制文本时使用的当前文本基线        
+    context.textBaseline = "middle";
+    //设置或返回文本内容的当前对齐方式。        
+    context.textAlign = "center";
+    //计算打印位置（12个数字）到半径的85％，每个数字旋转（PI / 6）：        
+    for (num = 1; num <= 12; num++) {
+        angle = num * Math.PI / 6;
+        context.rotate(angle);
+        //重新映射画布上的 (0,0) 位置           
+        context.translate(0, -radius * 0.85);
+        context.rotate(-angle);
+        //在画布上绘制"被填充的"文本            
+        context.fillText(num.toString(), 0, 0);
+        context.rotate(angle);
+        context.translate(0, radius * 0.85);
+        context.rotate(-angle);
+    }
+}
+
+/**     
+* 第四部分 -画时钟表格线     
+* @param context -2D绘图对象     
+* @param radius -时钟半径     
+*/    
+function drawLine(context, radius) {
+    let i;
+    for (i = 1; i <= 60; i++) {
+        if (i % 5 == 0) {
+            context.strokeStyle = "red";
+        } else {
+            context.strokeStyle = "black";
+        }
+        context.beginPath();
+        context.lineWidth = radius * 0.02;
+        context.rotate(i * Math.PI / 30);
+        context.moveTo(0, -radius * 1.05);
+        context.lineTo(0, -radius * 0.95);
+        context.stroke();
+        context.rotate(-i * Math.PI / 30);
+    }
+}
+
+/**     
+* 第五部分 - 画时钟指针     
+* @param context -2D绘图对象     
+* @param radius -时钟半径     
+*/    
+function drawTime(context, radius) {
+    //使用日期获取小时，分钟，秒：        
+    let date = new Date();
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
+    //绘制时针        
+    hours = hours % 12;
+    // 计算时针的角度        
+    hours = (hours * Math.PI / 6) +
+        (minutes * Math.PI / (6 * 60)) +
+        (seconds * Math.PI / (6 * 60 * 60));
+    //绘制一个长度（半径的50％）和宽度（半径的5％）的时针：        
+    drawHand(context, hours, radius * 0.4, radius * 0.05, "green");
+    //绘制分针        
+    minutes = (minutes * Math.PI / 30) + (seconds * Math.PI / (30 * 60));
+    drawHand(context, minutes, radius * 0.7, radius * 0.04, "blue");
+    // 绘制秒针        
+    seconds = (seconds * Math.PI / 30);
+    drawHand(context, seconds, radius * 0.8, radius * 0.02, "red");
+
+}
+
+/**     
+* 绘制一条给定长度和宽度,并指定颜色的线,用来画各种表针     
+* @param context -2D绘图对象     
+* @param pos -旋转角度     
+* @param length -长度     
+* @param width -宽度     
+*/    
+function drawHand(context, pos, length, width, color) {
+    //起始一条路径，或重置当前路径        
+    context.beginPath();
+    //设置或返回当前的线条宽度        
+    context.lineWidth = width;
+    //设置或返回线条的结束端点样式        
+    //round    向线条的每个末端添加圆形线帽        
+    context.lineCap = "round";
+    //把路径移动到画布中的指定点，不创建线条        
+    context.moveTo(0, 0);
+    //旋转当前绘图        
+    context.rotate(pos);
+    //添加一个新点，然后在画布中创建从该点到最后指定点的线条        
+    context.lineTo(0, -length);
+    context.strokeStyle = color;
+    //绘制已定义的路径        
+    context.stroke();
+    context.rotate(-pos);
+}
+    </script><script type="text/javascript">
+		window.onclick = function(e) {
+			//存储需要的颜色
+			let arr = ["#FF3030"];
+			//随机产生一个颜色
+			let heartNum = Math.floor(Math.random() * arr.length);
+			
+			var domss=document.getElementById("div_dom"); // 获得被克隆的节点对象 
+			var div=domss.cloneNode(true);
+			
+			div.style.color=arr[heartNum];
+			
+			div.setAttribute("id", "");//取消id值，变为可见
+			div.setAttribute("class", "opacity0");
+			
+			//获得鼠标的x,y轴的位置，并减去自身宽高的一半，使其能够在爱心的正中心
+			let x = e.pageX - div.offsetWidth / 2;
+			let y = e.pageY - div.offsetHeight / 2;
+			div.style.left = x + "px";
+			div.style.top = y + "px";
+			
+			//将dom追加到body中
+			document.body.appendChild(div);
+			//获得0-1的整数
+			let num = 1;
+			let timer = setInterval(() => {
+				num++;
+				if (num == 10) div.setAttribute("class", "opacity1");
+				if (num == 20) div.setAttribute("class", "opacity2");
+				y -= 5;
+				div.style.left = x + "px";
+				div.style.top = y + "px";
+				//如果超出屏幕范围，则删除此节点
+				if (num == 30) {
+					clearInterval(timer);
+					div.remove();
+				}
+			}, 70);
+		}
+    </script></center>
+    <center><div id="example1">
+      <b>网站大全</b>
+      </div><br><br><br><div id="example2">
+      <font color="white"><b>IT技术</b><br><br><a href="https://csdn.net" style="color:white">csdn开发者社区</a><br><a href="https://cnblogs.com" style="color:white">博客园</a><br><a href="https://www.jb51.net/" style="color:white">脚本之家</a><br><a href="https://www.runoob.com/" style="color:white">菜鸟教程</a><br><a href="http://www.pconline.com.cn/" style="color:white">太平洋电脑网</a><br><a href="https://www.microsoft.com/" style="color:white">微软</a><br></font><br><font color="white"><b>看博主</b><br><br><a href="https://bilibili.com/" style="color:white">bilibili</a><br><a href="https://www.acfun.cn" style="color:white">A站</a><br><a href="https://haokan.baidu.com/?fr=pc_pz" style="color:white">好看视频</a><br><a href="https://www.ixigua.com/?wid_try=1" style="color:white">西瓜视频</a><br><a href="https://v.xiaodutv.com" style="color:white">百度视频</a><br><br><font color="white"><b>实用工具</b><br><br></font><a href="https://c.runoob.com/front-end/61/" style="color:white">菜鸟工具（WEB开发在线工具）</a><br><a href="https://c.runoob.com/imglibs/" style="color:white">菜鸟工具（图片与颜色工具）</a><br><a href="https://cn.strikingly.com/s/sites/21542090/edit?new=1#37180" style="color:white">模板博客开发</a><br><a href="https://fanyi.baidu.com/?aldtype=16047#auto/zh" style="color:white">百度在线翻译</a><br><br><font color="white"><b>计算机安全</b><br><br><a href="https://www.360.cn/" style="color:white">360官网</a><br><a href="http://www.rising.com.cn/" style="color:white">瑞星杀毒</a><br><a href="http://www.chinahacker.com/" style="color:white">中国黑客联盟</a><br><a href="http://www.chinahonker.cn/" style="color:white">中国红客联盟</a><br></font></div>
+      <p style="text-align:right;"><a href="" style="color:white;"><b>历史档案馆</b></a><br><a href="" style="color:white;">中国不平凡的时期---近代史</a><br><a href="" style="color:white;">国民党到底怎么了</a><br><br><br><a href="" style="color:white"><b>政治档案馆</b></a><br><a href="" style="color:white;">共产党反对一党独裁</a><br><a href="" style="color:white;">美国资本主义下的社会</a></p>
+      <table>
+        <tr><td><b>广场新闻通报</b><br></td></tr>
+        
+      </table>
+      <table>
+        <tr><td>各位广大用户，本日正式开放中心广场。由于一个人的力量有限，<br>广场还暂时没有建全，本站长在今后会<br>多多建设，为大家提供更精彩的内容。</td></tr>
+      </table>
+      <table>
+        <tr><td>2022年12月16日&nbsp;<a href="" style="color:white;">Liuyx编辑</a></td></tr>
+      </table><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <a href="" style="color:white;">本站信息大全</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="" style="color:white">关于中心广场</a>
+      
+</center>
+
+</body>
+</html>
