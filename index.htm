@@ -2,52 +2,143 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Ming黑客联盟----首页</title>
-  <link rel="icon" sizes="any" mask href="">
-  <style>
-    a {text-decoration:none;}
-    a:hover{TEXT-DECORATION:underline}
-  </style>
-  <link href="https://canvas.wandongli.com/sample/style3?template_id=4070&name=Ming%E9%BB%91%E5%AE%A2%E8%81%94%E7%9B%9F&txt=HEI+KE+LIAN+MENG" rel="icon" type="image/png">
+<title>Liuyx的网上家园</title>
+<style>a {text-decoration:none;}
+  a:hover{TEXT-DECORATION:underline}
+  body{background-color:black;}
+  .text{
+            font-family: 'fangsong';
+            display: inline-block;
+          position: relative;
+          font-size: 40px;
+          height: 60px;
+          line-height: 60px;
+          color: rgb(245, 245, 245);
+        }
+  .text::after{
+            content: '';
+            position: absolute;
+            right: -10px;
+            top: 5px;
+            height: 50px;
+            width: 3px;     
+            background-color: #fff;
+            animation: san 0.5s steps(1) infinite;
+        }
+        @keyframes san{
+            0%,100%{
+                background-color: #fff;
+            }
+            50%{
+               background-color: transparent;
+            }
+
+        }
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+.taiji {
+    width: 150px;
+    height: 300px;
+    margin: 100px auto;
+    border-right: 150px solid #000;
+    background-color: #fff;
+    border-radius: 150px;
+    animation: rotate 2s infinite linear;
+}
+
+.taiji::before,
+.taiji::after {
+    content: '';
+    margin-left: 50%;
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border: 50px solid #000;
+    border-radius: 75px;
+}
+
+.taiji::after {
+    background-color: #000;
+    border: 50px solid #fff;
+}
+
+@keyframes rotate {
+    from {}
+
+    to {
+        transform: rotate(-360deg);
+    }
+}
+  p.outset {border-style:outset;border-left-width:100px;border-top-width:100px;border-right-width:100px;border-bottom-width:100px;}
+  </style>  
 </head>
 <body>
   <center>
-    <table><tr><td><img src="https://canvas.wandongli.com/sample/style3?template_id=4070&name=Ming%E9%BB%91%E5%AE%A2%E8%81%94%E7%9B%9F&txt=HEI+KE+LIAN+MENG" alt="some_text"></td></tr></table>
-	<table colspan="2" style="background-color:#4682B4;text-align:center;">
-      <tr><td><a href="https://liuyx.cf" style="color:white">联盟首页</a>&nbsp;&nbsp;</td>
-       <td><a href="" style="color:white">技术文章</a>&nbsp;&nbsp;</td>
-       <td><a href="" style="color:white">DDOS防御</a>&nbsp;&nbsp;</td>
-       <td><a href="https://liuyx.cf/hacker/hx.htm" style="color:white">核心申请</a>&nbsp;&nbsp;</td>
-       <td><a href="https://liuyx.cf/hacker/fz.htm" style="color:white">分站申请</a>&nbsp;&nbsp;</td>
-       <td><a href="https://liuyx.cf/hacker/dl.htm" style="color:white;">登陆网站</a>&nbsp;&nbsp;</td>
-       <td><a href="" style="color:white">问题咨询</a>&nbsp;&nbsp;</td>
-       <td><a href="" style="color:white">站长博客</a></td>
-  </table>
-  <table>
-    <tr><td><code>---------- Welcom to Ming by Hacker Website! ----------</code></td></tr>
-    </table>
-    <table>
-      <tr><td><b><code>本 站 公 告</code></b></td></tr>
-    </table>
-    <table>
-      <tr><td><code><font color="#1C1C1C">联盟实行开发性制度，任何只要是对计算机技术热爱并对社会工程学抱有钟情<br>之者，不论技术水平如何，都可以加入联盟，联盟不会像“中国黑客联盟(www<br>.chinahacker.com)那样搞所谓无知的做法，自己还装着有很厉害的技术。欢迎联系Q<br>Q 2595909216申请加入。</font></code></td></tr> 
-    </table>
-    <table>
-      <tr><td><b><code>站 点 转 接 服 务</code></b></td></tr>
-    </table>
-    <table>
-      <code><a href="https://www.chinahonker.cn" style="color:red">https://www.chinahonker.cn(中国红客)</a></code><br>
-      <code><a href="https://www.github.com" style="color:red">https://www.github.com(GitHub代码托管)</a></code><br>
-      <code><a href="https://www.onlinedown.net/" style="color:red">https://www.onlinedown.net/(华军软件园)</a></code><br>
-      <code><a href="https://www.csdn.net" style="color:red">https://www.csdn.net(csdn社区)</a></code><br>
-      <code><a href="https://www.microsoft.com" style="color:red">https://www.microsoft.com(微软)</a></code><br>
-      <code><a href="https://cn.wordpress.com" style="color:red">https://cn.wordpress.com(WordPress中文官网)</a></code><br>
-      <code><a href="https://www.google.com" style="color:red">https://www.google.com(谷歌)</a></code><br>
-      <code><a href="https://www.rsing.com" style="color:red">https://www.rsing.com(瑞星)</a></code><br>
-    </table>
-    ----------------------------------------------------------------------------------------------------<br>
-    <font color="#808080"><code>Copyrights © 2018 - 2022 liuyx.cf All Rights Reserved</code></font><br>
-    <font color="#808080"><code>版权所有&nbsp;   <a href="" style="color:#EE0000">Ming黑客联盟</a></code></font>
+    <h2>
+      <span class="text" ></span>
+    </h2>
+    
+    <script>
+           <!-- 获取.text标签 -->
+        const text = document.querySelector('.text');
+         <!-- 定义数组，里面放上文本 -->
+        const txt  =["Liuyx的个人主页","Welcome to My Website"]; 
+        <!-- 定义当前要显示的字符串的第几个字符 -->
+        var index=0;
+        <!-- 定义文本数组的下标 -->
+        var xiaBiao= 0;
+        <!-- 定义huan，拿来判断是要实现打字还是删除字效果，初始为真 -->
+        var huan = true;
+     <!-- 定义一个定时器，200毫秒执行一次 -->
+        setInterval(function(){
+           <!-- huan为真 -->
+            if(huan){             
+                <!-- 给.text标签添加字符，用.slice方法 --> 
+                text.innerHTML = txt[xiaBiao].slice(0,++index);
+            }
+            else{
+              <!-- 给.text标签删除字符，用.slice方法 --> 
+                text.innerHTML = txt[xiaBiao].slice(0,index--);
+            }
+            
+            <!-- 判断当前index是否为当前字符串长度了+3了 ，+3是为了打完后多等会，多走3个啥也不做的轮回-->
+            if(index==txt[xiaBiao].length+3)
+            {
+            <!-- huan变为假，开始执行删除文字效果 -->
+                huan = false;
+            }
+            <!-- 如果删完了 -->
+            else if(index<0)
+            {   
+            <!-- index=0，huan为真，从头开始打字 -->
+                index = 0;
+                huan = true;
+                <!-- 数组下标加1 -->
+                xiaBiao++;
+                if(xiaBiao>=txt.length)
+                {   
+                <!-- 如果数组下标超过了，又回到0 -->
+                    xiaBiao=0; 
+                }
+            }
+
+        },200)
+
+    </script>
+  <font size="5"><b><br><a href="https://liuyx.cf/z/center/index.htm" style="color:white">中心广场</a>&nbsp;&nbsp;<a href="" style="color:white">文章分享</a>&nbsp;&nbsp;<a href="" style="color:white">相册</a>&nbsp;&nbsp;<a href="" style="color:white">听音乐</a>&nbsp;&nbsp;<a href="" style="color:white">关于我</a>&nbsp;&nbsp;<a href="" style="color:white">联系我</a>&nbsp;&nbsp;<a href="" style="color:white">English Service</a><br>&nbsp;&nbsp;
+    </b></font>
+    <font color="white"><b>本站公告<br>本站因种种原因，以往是一个“不成正态”的网站，在近期经过本站长的不懈努力<br>终于建成一个“正态”的属于本站长专属的网上家园。本站长知道，本站有着无限<br>的发展潜能，在今后我相信本站会成为一个半万能网站，访问量将会突飞猛长。到<br>了最后，还是感谢广大网友对本站的关注！<br>2022年12月15日&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="" style="color:white">Liuyx编辑</a></b></font>
+    
   </center>
+  <center>
+    <div class="taiji"></div><a href="" style="color:white"><strong>太极时空</strong></a><br>
+    
+  </center>
+    
 </body>
 </html>
