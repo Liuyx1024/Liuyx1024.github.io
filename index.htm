@@ -1,144 +1,455 @@
 <!DOCTYPE html>
+
 <html>
-<head>
+
+  
+
 <meta charset="utf-8">
-<title>Liuyx的网上家园</title>
-<style>a {text-decoration:none;}
-  a:hover{TEXT-DECORATION:underline}
-  body{background-color:black;}
-  .text{
-            font-family: 'fangsong';
-            display: inline-block;
-          position: relative;
-          font-size: 40px;
-          height: 60px;
-          line-height: 60px;
-          color: rgb(245, 245, 245);
-        }
-  .text::after{
-            content: '';
-            position: absolute;
-            right: -10px;
-            top: 5px;
-            height: 50px;
-            width: 3px;     
-            background-color: #fff;
-            animation: san 0.5s steps(1) infinite;
-        }
-        @keyframes san{
-            0%,100%{
-                background-color: #fff;
-            }
-            50%{
-               background-color: transparent;
-            }
-
-        }
-* {
-    margin: 0;
-    padding: 0;
-}
 
 
-.taiji {
-    width: 150px;
-    height: 300px;
-    margin: 100px auto;
-    border-right: 150px solid #000;
-    background-color: #fff;
-    border-radius: 150px;
-    animation: rotate 2s infinite linear;
-}
 
-.taiji::before,
-.taiji::after {
-    content: '';
-    margin-left: 50%;
-    display: block;
-    width: 50px;
-    height: 50px;
-    background-color: #fff;
-    border: 50px solid #000;
-    border-radius: 75px;
-}
+<head>
 
-.taiji::after {
-    background-color: #000;
-    border: 50px solid #fff;
-}
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+  <title>Liuyx博客主页</title>
 
-@keyframes rotate {
-    from {}
-
-    to {
-        transform: rotate(-360deg);
-    }
-}
-  p.outset {border-style:outset;border-left-width:100px;border-top-width:100px;border-right-width:100px;border-bottom-width:100px;}
-  </style>  
 </head>
+
+
+
 <body>
-  <center>
-    <h2>
-      <span class="text" ></span>
-    </h2>
-    
-    <script>
-           <!-- 获取.text标签 -->
-        const text = document.querySelector('.text');
-         <!-- 定义数组，里面放上文本 -->
-        const txt  =["Liuyx的个人主页","Welcome to My Website"]; 
-        <!-- 定义当前要显示的字符串的第几个字符 -->
-        var index=0;
-        <!-- 定义文本数组的下标 -->
-        var xiaBiao= 0;
-        <!-- 定义huan，拿来判断是要实现打字还是删除字效果，初始为真 -->
-        var huan = true;
-     <!-- 定义一个定时器，200毫秒执行一次 -->
-        setInterval(function(){
-           <!-- huan为真 -->
-            if(huan){             
-                <!-- 给.text标签添加字符，用.slice方法 --> 
-                text.innerHTML = txt[xiaBiao].slice(0,++index);
-            }
-            else{
-              <!-- 给.text标签删除字符，用.slice方法 --> 
-                text.innerHTML = txt[xiaBiao].slice(0,index--);
-            }
-            
-            <!-- 判断当前index是否为当前字符串长度了+3了 ，+3是为了打完后多等会，多走3个啥也不做的轮回-->
-            if(index==txt[xiaBiao].length+3)
-            {
-            <!-- huan变为假，开始执行删除文字效果 -->
-                huan = false;
-            }
-            <!-- 如果删完了 -->
-            else if(index<0)
-            {   
-            <!-- index=0，huan为真，从头开始打字 -->
-                index = 0;
-                huan = true;
-                <!-- 数组下标加1 -->
-                xiaBiao++;
-                if(xiaBiao>=txt.length)
-                {   
-                <!-- 如果数组下标超过了，又回到0 -->
-                    xiaBiao=0; 
-                }
-            }
 
-        },200)
+    <header>
 
-    </script>
-  <font size="5"><b><br><a href="https://liuyx.cf/z/center/index.htm" style="color:white">中心广场</a>&nbsp;&nbsp;<a href="" style="color:white">文章分享</a>&nbsp;&nbsp;<a href="" style="color:white">相册</a>&nbsp;&nbsp;<a href="" style="color:white">听音乐</a>&nbsp;&nbsp;<a href="" style="color:white">关于我</a>&nbsp;&nbsp;<a href="" style="color:white">联系我</a>&nbsp;&nbsp;<a href="" style="color:white">English Service</a><br>&nbsp;&nbsp;
-    </b></font>
-    <font color="white"><b>本站公告<br>本站因种种原因，以往是一个“不成正态”的网站，在近期经过本站长的不懈努力<br>终于建成一个“正态”的属于本站长专属的网上家园。本站长知道，本站有着无限<br>的发展潜能，在今后我相信本站会成为一个半万能网站，访问量将会突飞猛长。到<br>了最后，还是感谢广大网友对本站的关注！<br>2022年12月15日&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="" style="color:white">Liuyx编辑</a></b></font>
-    
-  </center>
-  <center>
-    <div class="taiji"></div><a href="" style="color:white"><strong>太极时空</strong></a><br>
-    
-  </center>
-    
+        <h1><span>Liuyx的个人博客 </span>Liuyx's Blog</h1>
+
+        <h3>Welcom to My Website!</h3>
+
+    </header>
+
+    <div class="flex">
+
+        <nav>
+
+            <a class="logo" href="#">
+
+                <h2>https://liuyx.cf</h2>
+
+                <p>博客菜单</p>
+
+            </a>
+
+
+
+            <a href="https://liuyx.cf">
+
+                <i class="fa fa-home fa-lg"></i>
+
+                <span>主页</span>
+
+            </a>
+
+
+
+            <a href="https://liuyx.cf/with/index.html">
+
+                <i class="fa fa-user fa-lg"></i>
+
+                <span>与我进行合作</span>
+
+            </a>
+
+
+
+            <a href="mailto:2595909216@qq.com?cc=2595909216@qq.com&bcc=2595909216@qq.com&subject=Summer%20Party&body=You%20are%20invited%20to%20a%20big%20summer%20party!" target="_top">
+
+                <i class="fa fa-envelope-o fa-lg"></i>
+
+                <span>E-mail</span>
+
+            </a>
+
+
+
+            <a href="https://liuyx.cf/html/index.html">
+
+                <i class="fa fa-html5 fa-lg"></i>
+
+                <span>HTML5</span>
+
+            </a>
+
+
+
+            <a href="https://liuyx.cf/css/index.html">
+
+                <i class="fa fa-css3 fa-lg"></i>
+
+                <span>CSS3</span>
+
+            </a>
+
+            <a href="https://liuyx.cf/python/index.html">
+
+                <i class="fa fa-book fa-lg"></i>
+
+                <span>Python</span>
+
+            </a>
+
+          <a href="https://liuyx.cf/st/index.html">
+
+                <i class="fa fa-book fa-lg"></i>
+
+                <span>渗透测试</span>
+
+            </a>
+
+          <a href="https://liuyx.cf/blog/index.html">
+
+                <i class="fa fa-user fa-lg"></i>
+
+                <span>博客知识</span>
+
+            </a>
+
+            <a href="https://liuyx.cf/history/index.html">
+
+                <i class="fa fa-book fa-lg"></i>
+
+                <span>历史档案馆</span>
+
+            </a>
+
+
+
+            <a href="#">
+
+                <i class="fa fa-cog fa-lg"></i>
+
+                <span>设置</span>
+
+            </a>
+
+
+
+            <a href="#">
+
+                <i class="fa fa-question-circle fa-lg"></i>
+
+                <span>帮助</span>
+
+            </a>
+
+        </nav>
+
+        <div class="contents">
+
+            <h1>我的个人博客</h1>
+
+            <p>记得在csdn注册过一个博客，平时没事在博客上发发文章，谈谈有关技术之类的，但有一次偶然点进去一个博客搭建教程，然后我看了这位博主已经搭建好的博客，感觉挺好。对于“博客”这个词，我是感觉又熟悉又陌生，而在我以上那段经历，使我深深地认识到了博客。起初我对于网站来说还是个技术忙，就一些编写网页的语言比如“HTML,CSS"等我是一概不通，虽然我对语言完全不通，但多多少少对网站的知识还是有所了解，比如”域名，服务器“等，我自己知道注册域名是要花钱的，为了节约这点小钱，特意上网查了一下免费域名注册，找到了免费域名注册商平台，就用邮箱注册了这个域名，也就是现在这个网站的域名：liuyx.cf。域名虽然是弄到手了，但是连服务器都没有怎么能成？我是去购买云服务器吗？还是把自己的电脑搭建成服务器？我被这个问题给难住了，难住了4天还没有解决。我现在越来越急，甚至有了放弃搭建博客的信念，但是突然我的一个朋友给我发来了消息，他说用GitHub托管代码当作服务器（因为之前我跟这个朋友说过关于我建站的事），然后这货连个教程都给我，我只好自己上网去找。捣鼓了半天，终于是把服务器弄好了，服务器弄好了，得编辑页面呀，可我这是html什么都不懂，我也知道基本的网站语言，没办法，只好再去上网寻找教程，找了很长时间，我找到了一个很好的教程网站，用了1个多月时间学html，html也很简单，非常容易学会。学完90%的html后，我才发现自己理论上是有了，但是实际开发时就不知道页面该怎么编辑！（学html的时候顺带的学了一点CSS，CSS在美化网站有着非常重要的作用）没办法，事实就是如此！于是我艰难的经历了2个多月的探索，知道最近一段时间，我是终于把这个网站搞的才真正像一会事了！艰难历程啊！不过历程没有白费，该有的结果还是来了。接下来想搭建博客的朋友们可以看一下下面我整理出来的搭建博客的具体步骤。另外说明一点，我搭建博客一点费用都没有花，所以接下来的操作可让你免费搭建属于自己的博客网上家园。（原本这一篇文章应该归为“博客知识”栏一类，但既然这是博客网站，我还是把这篇放在了网站主页）</p>
+
+
+
+            <h3> 注册免费域名</h3>
+
+            <p>注册域名当然得有一个专门的注册平台，这里想要注册免费域名登陆这个网站：<a href="https://www.freenom.com" style="color:white;">www.freenom.com</a>, 进入之后，在写有“寻找一个新的免费域名”文本框中输入你想注册的域名，另外特别强调，输入域名时域名的后缀必须为“.tk”或“.cf”或“.ml”或“.ga”，比如本站域名后缀为“.cf”，因为只有这些后缀免费，其他的都需要花钱。输入好之后，</p>
+
+
+
+            <h3>搭建GitHub托管服务器</h3>
+
+            <p>首先还是登陆GitHub官网：<a href="https://www.github.com" style="color:white;">www.github.com</a>进入界面后，在输入框中输入你的邮箱地址，之后点击继续后，设置你的GitHub账户的密码。然后就会自动登陆GitHub了，之后就是正式搭建托管服务器的过程，与其说是搭建服务器，实则是创建一个GitHub仓库，把注册的域名绑定在这个仓库中，在这里我不在出创建仓库的教程，主要是因为我出教程时没有配图片，可能学习有些困难，估计有些人特别想骂我。废话不多说，我在这里挂个链接，就是创建仓库的教程。教程网址：<a href="https://blog.csdn.net/weixin_44718395/article/details/126561316" style="color:white;">blog.csdn.net/weixin_44718395/article/details/126561316</a></p>
+
+
+
+            <h3>创建博客的第一个页面（hello world）</h3>
+
+            <p>创建好仓库之后，我们会发现仓库中有一个叫“README.md”的文件，我们不在这个文件中写代码，点击右上方的“Add file”按钮（注意是右上方不是右上角）又会出现两个选项“Creat new file”和“Upload files”，我们点击“Creat new file”，这时在“Name your file...”输入框中输入index.htm，然后在下面的大输入框中直接输入“hello world"，然后把页面往下拉，拉到最低，最后点击那个上面写有文字“Commit new file”的绿色按钮，之后它会自动跳转页面到仓库主页，之后我们会发现文件列表中多出了一个名叫“index.htm”的文件，这是网站博客的主页，也就是直接输入你的域名进入你的网站后看到的页面，然后等1分钟左右，在网址输入栏中输入“yourname.github.io”，注意在之前创建仓库时给仓库起的名字必须为你的GitHub账户名字+.github.io，这样才能使你的网站能够正常访问，一个点都不能少！如果名字起错的话，再重新弄一个吧。接着上一步，进入网站后，你就会发现页面写着“hello world”字样，至此，你的博客首页就创建好了。</p>
+
+
+
+            <h3>开始学习html,css</h3>
+
+            <p> 下一步要干什么？当然是要学习编写语言了！首先建议大家先学习html，因为主要的网站语言还有css,javascript，html为何要先学？因为他是学习其他语言的基础，我跟你这样说你也不能体会到，按照我提供的路线学习，保准没有错，学完之后，你应该就会感受到html是基础之基础！html并不难学，真的是一个很简单的语言，其他的语言同样也是！这多是菜鸟级别的语言，相对于C,C#,Java等这些语言来说，学习网站语言是入门的最佳练手！那我为什么学习了1个多月呢？各位，每个人的学习能力不同，还有一点，是我不是每天花大量的时间去学习这个东西，因为事情多太忙，在座的各位都是脑力打开，时间宽松，精神极佳，我相信你们一定会学会，千万不要在时间长这一关卡住，IT技术就是这样，要的就是时间精力！那么还有一点，大家现在不要着急买书，我推荐一个自学网站，上面的教程与时俱进，还有在线实例，我就是在这个网站学会的。网址：<a href="https://www.runoob.com" style="color:white;">www.runoob.com</a></p>
+
+
+
+            <h3>向前端工程师进发？</h3>
+
+            <p>当你网站网页知识学的多了，对于前端这个词，会有越来越来深刻的认识，起初你只是爱好，由爱好转入职业，我感觉这说的有些不对劲，发展职业，大多数人会选择自己爱好的某一方面发展，但爱好不一定对这方面有天赋，不过对于我来说，IT这种东西，只要你去学的话肯定是能学成的。大多数优秀的网站开发人员或是系统开发人员或是应用开发人员，80%以上都是自学而成，黑客这个那就更不用说了，我认为，一个计算机专业出来的自称黑客的人，那都不是优秀的黑客。我们就拿一些著名黑客来说，不知道大家有没有看过凯文 米特尼克的自传《线上幽灵》，这本书中可以很明显的看出大名鼎鼎的顶级黑客技术几乎都是自学而成，连顶级黑客都是自学而成，难道你不相信顶级黑客的力量吗？所以这一节文章的标题为“向前端工程师进发？”，学习网页语言在更深入，在另外可以学习一些编程技巧，真的是这种可能终将会变完全可能，凭的就是时间。我虽然不是专业前端，但我是知道一点，这方面无论是任何的开发，最忌讳就是因为时间长而发愁。</p>
+
+
+
+        </div>
+
+    </div>
+
+    <footer>
+
+        <div class="left">
+
+            Copyright İ2022 https://liuyx.cf | Powered by Liuyx
+
+        </div>
+
+        <div class="right">
+
+            <a href="#">主页</a>
+
+            <a href="#">关于</a>
+
+            <a href="#">联系</a>
+
+            <a href="#">繁體中文</a>
+
+        </div>
+
+    </footer>
+
+    <style>
+
+        header{
+
+          background-color:#ee6664; 
+
+          text-align:center;
+
+          padding:10px 0px; 
+
+        }
+
+        header h1{
+
+          margin:0px;
+
+          font-size:26px; 
+
+          color:#414141; 
+
+          font-weight:1000;
+
+          font-family: 'Acme', sans-serif;
+
+        }
+
+        
+
+        h1 span{
+
+          font-weight:400;
+
+        }
+
+        body{
+
+          font-family: "Open Sans", arial;
+
+          color:#fff;
+
+          background: #666c82;  
+
+          margin:0;
+
+        }
+
+        .flex{
+
+          display:flex;
+
+        }
+
+        nav{
+
+          margin-top:15px;
+
+          background:#DAF7A6;
+
+          height:100%;
+
+          width:250px;
+
+          box-shadow:4px 4px 4px #3C3F35;
+
+          border-radius:5px;
+
+          margin-left:1%;
+
+        
+
+          position:sticky;
+
+          position:-webkit-sticky;
+
+          top:20px;
+
+        }
+
+        
+
+        nav a {
+
+          text-decoration:none;
+
+          color:BLACK;
+
+          font-size: 16px;
+
+          display:block;
+
+          border-bottom:1px solid #03A2A2;  
+
+        }
+
+        .fa {
+
+          position: relative;
+
+          top:12px;
+
+          width: 70px;
+
+          height: 36px;
+
+          text-align: center;
+
+          font-size:20px;
+
+        }
+
+        nav span {
+
+          position:relative;
+
+          top:12px;
+
+        }
+
+        .logo{
+
+          position:relative;
+
+          top:0px;
+
+          padding:1px;
+
+          background-color:#CCF581;
+
+          color:#07145D; 
+
+          font-family: 'Big Shoulders Display', cursive;
+
+          text-align:center;
+
+          line-height: 0.8;
+
+        }
+
+        .logo p{
+
+          color:black;
+
+        }
+
+        nav a:hover{
+
+          color:#fff;
+
+          background-color:#3863F4; 
+
+        }
+
+        .contents{
+
+          background-color:#3E414F;
+
+          padding:15px 30px;
+
+          width:75%;
+
+          margin:15px 3%;
+
+         
+
+          box-shadow:4px 4px 4px #3C3F35;
+
+          border-radius:5px;
+
+        }
+
+        
+
+        .contents h3{
+
+          border-bottom: 1px solid grey;
+
+          padding-bottom:10px;
+
+          font-family: 'Shadows Into Light', cursive;
+
+          margin-bottom: 20px
+
+        }
+
+        
+
+        .contents p{
+
+          text-align:justify;
+
+          margin-bottom:50px;
+
+          line-height:2;
+
+        }
+
+        footer{
+
+          background:#323232;
+
+          padding:10px;
+
+          height:25px;
+
+        
+
+        }
+
+        .left{
+
+          float:left;
+
+          margin-left:3%;
+
+        }
+
+        .right{
+
+          display:inline-block;
+
+          float:right;
+
+          margin-right:3%;
+
+        }
+
+        .right a{
+
+          color:white;
+
+          margin-right:8px;
+
+          text-decoration:none;
+
+        }
+
+        .right a:hover{
+
+          border-bottom: 2px solid white;
+
+        }
+
+    </style>
+
 </body>
 </html>
