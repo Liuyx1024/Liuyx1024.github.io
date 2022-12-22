@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+
+<html>
+
+  
+
+<meta charset="utf-8">
+
+
+
+<head>
+
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+
+</head>
+
+
+
+<body>
+
+    <header>
+
+        <h1><span>Liuyx的个人博客 </span>Liuyx's Blog</h1>
+
+        <h3>Welcom to My Website!</h3>
+
+    </header>
+
+    <div class="flex">
+
+        <nav>
+
+            <a class="logo" href="#">
+
+                <h2>https://liuyx.cf</h2>
+
+                <p>博客菜单</p>
+
+            </a>
+
+
+
+            <a href="https://liuyx.cf">
+
+                <i class="fa fa-home fa-lg"></i>
+
+                <span>主页</span>
+
+            </a>
+
+
+
+            <a href="https://liuyx.cf/with/index.html">
+
+                <i class="fa fa-user fa-lg"></i>
+
+                <span>与我进行合作</span>
+
+            </a>
+
+
+
+            <a href="mailto:2595909216@qq.com?cc=2595909216@qq.com&bcc=2595909216@qq.com&subject=Summer%20Party&body=You%20are%20invited%20to%20a%20big%20summer%20party!" target="_top">
+
+                <i class="fa fa-envelope-o fa-lg"></i>
+
+                <span>E-mail</span>
+
+            </a>
+
+
+
+            <a href="https://liuyx.cf/html/index.html">
+
+                <i class="fa fa-html5 fa-lg"></i>
+
+                <span>HTML5</span>
+
+            </a>
+
+
+
+            <a href="https://liuyx.cf/css/index.html">
+
+                <i class="fa fa-css3 fa-lg"></i>
+
+                <span>CSS3</span>
+
+            </a>
+
+            <a href="https://liuyx.cf/python/index.html">
+
+                <i class="fa fa-book fa-lg"></i>
+
+                <span>Python</span>
+
+            </a>
+
+          <a href="https://liuyx.cf/st/index.html">
+
+                <i class="fa fa-book fa-lg"></i>
+
+                <span>渗透测试</span>
+
+            </a>
+
+          <a href="https://liuyx.cf/blog/index.html">
+
+                <i class="fa fa-user fa-lg"></i>
+
+                <span>博客知识</span>
+
+            </a>
+
+            <a href="https://liuyx.cf/history/index.html">
+
+                <i class="fa fa-book fa-lg"></i>
+
+                <span>历史档案馆</span>
+
+            </a>
+
+
+
+            <a href="#">
+
+                <i class="fa fa-cog fa-lg"></i>
+
+                <span>设置</span>
+
+            </a>
+
+
+
+            <a href="#">
+
+                <i class="fa fa-question-circle fa-lg"></i>
+
+                <span>帮助</span>
+
+            </a>
+
+        </nav>
+
+        <div class="contents">
+
+            <h1>Kali Linux Web渗透之HTTrack的使用</h1>
+
+            <p>这是我在博客发表关于渗透测试的第一篇文章，不多说什么，况且没有什么好多说。这篇文章就教大家Web渗透测试的第一步——克隆网站。</p>
+
+
+
+            <h3>搭建攻击端环境</h3>
+
+          <p>从标题也可以看出，我们用到的环境系统是Kali Linux，可能有些用户还不知道Kali Linux是个什么东西，可以上百度了解一下，方便你可以看懂后面的内容。了解Kali Linux：<a href="https://baike.baidu.com/item/Kali%20linux/8305689?fromtitle=Kali&fromid=1800134&fr=aladdin" style="color:white;">点击这里</a>。这里再说明一点，为什么不使用Windows进行测试，因为Kali Linux拥有特别多的工具可以使用，况且以Linux本身的特征，插入黑客插件了等特别方便，它开源系统。相比Windows的不开源，使用Kali更方便。<i>（注：Kali Linux是专门用来进行渗透测试的系统）</i>搭建Kali系统，可以从官网下载镜像：<a href="https://www.kali.org" style="color:white;">www.kali.org</a>。接下来具体安装教程我这里给挂个链接，就不在多阐述，因为这不是本篇的重点。安装教程网址：<a href="https://blog.csdn.net/Withadream/article/details/126821400" style="color:white;">https://blog.csdn.net/Withadream/article/details/126821400</a>
+
+
+
+            <h3>安装HTTrack</h3>
+
+            <p>
+              这里先简单介绍一下HTTrack：HTTrack是一个免费并易于使用的线下浏览器工具，全称是HTTrack Website Copier for Windows，它能够让你从互联网上下载指定的网站进行线下浏览(离线浏览)，也可以用来收集信息(甚至有网站使用隐藏的密码文件)，一些仿真度极高的伪网站（为了骗取用户密码），也是使用类似工具做的。简单来说这个工具功能就是渗透测试中的第一步：收集信息。HTTrack是Kali中的一个内置工具，可能有些版本没有这个工具，那么我们就需要安装这个工具。打开Kali的终端，输入命令&nbsp;<font color="black"><code style="background-color:white;">apt-get install httrack</code></font>&nbsp;等待安装。安装好了，终端就恢复到了原来的状态。
+          </p>
+
+
+
+            <h3>使用HTTrack克隆网站</h3>
+
+            <p>
+             打开命令行终端，输入命令&nbsp;<font color="black"><code style="background-color:white;">mkdir websites</code></font>&nbsp;创建一个用于存放克隆网站的目录<i>（注：不要切换目录！）</i>这个目录的名字起什么都行。之后再终端输入命令&nbsp;<font color="black"><code style="background-color:white;">httrack</code></font>&nbsp;启动HTTrack，然后它让你输入项目的名称，你可以随便起一个，这里我输入&nbsp;<font color="black"><code style="background-color:white;">test</code></font>&nbsp;
+ 然后它让你输入存放克隆网站的路径，这里我们输入上文创建的目录的路径&nbsp;<font color="black"><code style="background-color:white;">/root/websites</code></font>&nbsp;之后它让你输入你要克隆的网站的url地址，这里我输入&nbsp;<font color="black"><code style="background-color:white;">https://www.baidu.com</code></font>&nbsp;<i>（注：输入url时必须要在网址前输入“https://”或“http://”，否则会出现错误！）</i>之后会弹出四个选项，这里直接输入&nbsp;<font color="black"><code style="background-color:white;">2</code></font>&nbsp;这个为镜像向导模式，选择这个很方便，其他选项不在多阐述。之后它又会问你是否使用代理，这里我们如果有代理的话输入，没有就什么都不键。这个过后，它会问你导入什么类型的文件，这里我们输入&nbsp;<font color="black"><code style="background-color:white;">*</code></font>&nbsp;表示所有文件。之后那个也是什么都不输入，然后输入y开始进行攻击。等一段时间后，我们在终端输入&nbsp;<font color="black"><code style="background-color:white;">cd /root/web/test</code></font>&nbsp;我是这样的目录，你输入你之前创建的那个保存克隆网站的目录，然后输入&nbsp;<font color="black"><code style="background-color:white;">ls</code></font>&nbsp;这样就列出了所有的克隆文件，你就去可以查看它。至此，本篇文章结束。
+
+      </p>
+
+
+
+            
+
+
+
+        </div>
+
+    </div>
+
+    <footer>
+
+        <div class="left">
+
+            Copyright İ2022 https://liuyx.cf | Powered by Liuyx
+
+        </div>
+
+        <div class="right">
+
+            <a href="#">主页</a>
+
+            <a href="#">关于</a>
+
+            <a href="#">联系</a>
+
+            <a href="#">繁體中文</a>
+
+        </div>
+
+    </footer>
+
+    <style>
+
+        header{
+
+          background-color:#ee6664; 
+
+          text-align:center;
+
+          padding:10px 0px; 
+
+        }
+
+        header h1{
+
+          margin:0px;
+
+          font-size:26px; 
+
+          color:#414141; 
+
+          font-weight:1000;
+
+          font-family: 'Acme', sans-serif;
+
+        }
+
+        
+
+        h1 span{
+
+          font-weight:400;
+
+        }
+
+        body{
+
+          font-family: "Open Sans", arial;
+
+          color:#fff;
+
+          background: #666c82;  
+
+          margin:0;
+
+        }
+
+        .flex{
+
+          display:flex;
+
+        }
+
+        nav{
+
+          margin-top:15px;
+
+          background:#DAF7A6;
+
+          height:100%;
+
+          width:250px;
+
+          box-shadow:4px 4px 4px #3C3F35;
+
+          border-radius:5px;
+
+          margin-left:1%;
+
+        
+
+          position:sticky;
+
+          position:-webkit-sticky;
+
+          top:20px;
+
+        }
+
+        
+
+        nav a {
+
+          text-decoration:none;
+
+          color:BLACK;
+
+          font-size: 16px;
+
+          display:block;
+
+          border-bottom:1px solid #03A2A2;  
+
+        }
+
+        .fa {
+
+          position: relative;
+
+          top:12px;
+
+          width: 70px;
+
+          height: 36px;
+
+          text-align: center;
+
+          font-size:20px;
+
+        }
+
+        nav span {
+
+          position:relative;
+
+          top:12px;
+
+        }
+
+        .logo{
+
+          position:relative;
+
+          top:0px;
+
+          padding:1px;
+
+          background-color:#CCF581;
+
+          color:#07145D; 
+
+          font-family: 'Big Shoulders Display', cursive;
+
+          text-align:center;
+
+          line-height: 0.8;
+
+        }
+
+        .logo p{
+
+          color:black;
+
+        }
+
+        nav a:hover{
+
+          color:#fff;
+
+          background-color:#3863F4; 
+
+        }
+
+        .contents{
+
+          background-color:#3E414F;
+
+          padding:15px 30px;
+
+          width:75%;
+
+          margin:15px 3%;
+
+         
+
+          box-shadow:4px 4px 4px #3C3F35;
+
+          border-radius:5px;
+
+        }
+
+        
+
+        .contents h3{
+
+          border-bottom: 1px solid grey;
+
+          padding-bottom:10px;
+
+          font-family: 'Shadows Into Light', cursive;
+
+          margin-bottom: 20px
+
+        }
+
+        
+
+        .contents p{
+
+          text-align:justify;
+
+          margin-bottom:50px;
+
+          line-height:2;
+
+        }
+
+        footer{
+
+          background:#323232;
+
+          padding:10px;
+
+          height:25px;
+
+        
+
+        }
+
+        .left{
+
+          float:left;
+
+          margin-left:3%;
+
+        }
+
+        .right{
+
+          display:inline-block;
+
+          float:right;
+
+          margin-right:3%;
+
+        }
+
+        .right a{
+
+          color:white;
+
+          margin-right:8px;
+
+          text-decoration:none;
+
+        }
+
+        .right a:hover{
+
+          border-bottom: 2px solid white;
+
+        }
+
+    </style>
+
+</body>
+</html>
