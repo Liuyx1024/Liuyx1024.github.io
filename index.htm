@@ -12,7 +12,28 @@
 
     <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
   <title>Liuyx博客主页</title>
-
+  <link href="https://img0.baidu.com/it/u=1718973004,1821517032&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1671901200&t=fede776ac9ddc2169e0ab97d83a2a593" rel="icon" type="image/png">
+  <style>
+    
+    textarea {
+        width: 1000px;
+        height: 100px;
+        border: 1px black solid;
+        outline: none;
+        resize: none;
+    }
+    li {
+        width: 300px;
+        padding: 5px;
+        background-color: black;
+        font-size: 15px;
+        margin: 15px 0;
+    }
+    li a {
+        float: right;
+    }
+</style>
+  
 </head>
 
 
@@ -183,8 +204,39 @@
 
         </div>
 
-    </div>
-
+  </div><center><b>谈谈你的看法吧</b></center>
+<center> <textarea></textarea>
+    <button>发布</button>
+  <ul></ul></center>
+  <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+  <script>
+        var txt = document.querySelector("textarea");
+        var btn = document.querySelector("button");
+        var ul = document.querySelector("ul");
+        
+        btn.onclick = function () {
+            if (txt.value == "") {
+                alert("您没有输入内容")
+            } else {
+                
+                var li = document.createElement("li");
+                
+                li.innerHTML = txt.value + "<a href='javascript:;' style='color:white';>删除</a>"
+                txt.value = "";
+                
+                ul.insertBefore(li, ul.children[0]);
+                
+                var as = document.querySelectorAll("a");
+                
+                for (var i = 0; i < as.length; i++) {
+                    as[i].onclick = function () {
+               
+                        ul.removeChild(this.parentNode);
+                    }
+                }
+            }
+        }
+</script>
     <footer>
 
         <div class="left">
