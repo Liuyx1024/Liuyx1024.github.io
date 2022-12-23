@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+
+<html>
+
+  
+
+<meta charset="utf-8">
+
+
+
+<head>
+
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+  <title>Kali Linux Web渗透之nmap的使用</title>
+  <link href="https://img0.baidu.com/it/u=1718973004,1821517032&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1671901200&t=fede776ac9ddc2169e0ab97d83a2a593" rel="icon" type="image/png">
+  <style>
+    
+    textarea {
+        width: 1000px;
+        height: 100px;
+        border: 1px black solid;
+        outline: none;
+        resize: none;
+    }
+    li {
+        width: 300px;
+        padding: 5px;
+        background-color: black;
+        font-size: 15px;
+        margin: 15px 0;
+    }
+    li a {
+        float: right;
+    }
+</style>
+  
+</head>
+
+
+
+<body>
+
+    <header>
+
+        <h1><span>Liuyx的个人博客 </span>Liuyx's Blog</h1>
+
+        <h3>Welcom to My Website!</h3>
+
+    </header>
+
+    <div class="flex">
+
+        <nav>
+
+            <a class="logo" href="#">
+
+                <h2>https://liuyx.cf</h2>
+
+                <p>博客菜单</p>
+
+            </a>
+
+
+
+            <a href="https://liuyx.cf">
+
+                <i class="fa fa-home fa-lg"></i>
+
+                <span>主页</span>
+
+            </a>
+
+
+
+            <a href="https://liuyx.cf/with/index.html">
+
+                <i class="fa fa-user fa-lg"></i>
+
+                <span>与我进行合作</span>
+
+            </a>
+
+
+
+            <a href="mailto:2595909216@qq.com?cc=2595909216@qq.com&bcc=2595909216@qq.com&subject=Summer%20Party&body=You%20are%20invited%20to%20a%20big%20summer%20party!" target="_top">
+
+                <i class="fa fa-envelope-o fa-lg"></i>
+
+                <span>E-mail</span>
+
+            </a>
+
+
+
+            <a href="https://liuyx.cf/html/index.html">
+
+                <i class="fa fa-html5 fa-lg"></i>
+
+                <span>HTML5</span>
+
+            </a>
+
+
+
+            <a href="https://liuyx.cf/css/index.html">
+
+                <i class="fa fa-css3 fa-lg"></i>
+
+                <span>CSS3</span>
+
+            </a>
+
+            <a href="https://liuyx.cf/python/index.html">
+
+                <i class="fa fa-book fa-lg"></i>
+
+                <span>Python</span>
+
+            </a>
+
+          <a href="https://liuyx.cf/st/index.html">
+
+                <i class="fa fa-book fa-lg"></i>
+
+                <span>渗透测试</span>
+
+            </a>
+
+          <a href="https://liuyx.cf/blog/index.html">
+
+                <i class="fa fa-user fa-lg"></i>
+
+                <span>博客知识</span>
+
+            </a>
+
+            <a href="https://liuyx.cf/history/index.html">
+
+                <i class="fa fa-book fa-lg"></i>
+
+                <span>历史档案馆</span>
+
+            </a>
+
+
+
+            <a href="#">
+
+                <i class="fa fa-cog fa-lg"></i>
+
+                <span>设置</span>
+
+            </a>
+
+
+
+            <a href="#">
+
+                <i class="fa fa-question-circle fa-lg"></i>
+
+                <span>帮助</span>
+
+            </a>
+
+        </nav>
+
+        <div class="contents">
+
+            <h1>Kali Linux Web渗透之nmap的使用</h1>
+
+            <p>本篇文章教大家如何在Kali使用使用nmap来进行相关扫描，废话不多说，直接开工。（转载请标明本文链接：https://liuyx.cf/st/2.html，并表明作者：Liuyx，原创不易）</p>
+
+
+
+            <h3> 启动nmap</h3>
+
+            <p>打开kali终端，在里面输入命令&nbsp;<font color="black"><code style="background-color:white;">nmap</code></font>&nbsp;启动nmap</p>
+
+
+
+            <h3>nmap基本命令的使用</h3>
+
+            <p>1.判断一台主机是否在线，输入命令&nbsp;<font color="black"><code style="background-color:white;">nmap -sn 网址或主机ip</code></font>&nbsp;如果显示的结果有“Host is up......”的字样，说明目标主机在线。<br>2.查看一台主机开放哪些端口，在终端输入命令&nbsp;<font color="black"><code style="background-color:white;">nmap -sS 网址或主机ip</code></font>&nbsp;在这个过程中需要一段时间才能得出结果。<br>3.扫描指定端口，在终端输入命令&nbsp;<font color="black"><code style="background-color:white;">nmap -p 端口号 网址或主机ip</code></font>&nbsp;，然后经过一段时间可得出结果。<br>4.想要获取目标主机的操作系统，输入命令&nbsp;<font color="black"><code style="background-color:white;">nmap -O 网址或主机ip</code></font>&nbsp;即可获取信息。这里我只是列出了一些nmap经常使用的命令，如要了解更多，请到nmap官网：<a href="http://nmap.org/" style="color:white;">nmap.org</a>查看。</p>
+
+
+
+            
+
+
+
+        </div>
+
+  </div><center><b>谈谈你的看法吧</b></center>
+<center> <textarea></textarea>
+    <button>发布</button>
+  <ul></ul></center>
+  <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+  <script>
+        var txt = document.querySelector("textarea");
+        var btn = document.querySelector("button");
+        var ul = document.querySelector("ul");
+        
+        btn.onclick = function () {
+            if (txt.value == "") {
+                alert("您没有输入内容")
+            } else {
+                
+                var li = document.createElement("li");
+                
+                li.innerHTML = txt.value + "<a href='javascript:;' style='color:white';>删除</a>"
+                txt.value = "";
+                
+                ul.insertBefore(li, ul.children[0]);
+                
+                var as = document.querySelectorAll("a");
+                
+                for (var i = 0; i < as.length; i++) {
+                    as[i].onclick = function () {
+               
+                        ul.removeChild(this.parentNode);
+                    }
+                }
+            }
+        }
+</script>
+    <footer>
+
+        <div class="left">
+
+            Copyright İ2022 https://liuyx.cf | Powered by Liuyx
+
+        </div>
+
+        <div class="right">
+
+            <a href="#">主页</a>
+
+            <a href="#">关于</a>
+
+            <a href="#">联系</a>
+
+            <a href="#">繁體中文</a>
+
+        </div>
+
+    </footer>
+
+    <style>
+
+        header{
+
+          background-color:#ee6664; 
+
+          text-align:center;
+
+          padding:10px 0px; 
+
+        }
+
+        header h1{
+
+          margin:0px;
+
+          font-size:26px; 
+
+          color:#414141; 
+
+          font-weight:1000;
+
+          font-family: 'Acme', sans-serif;
+
+        }
+
+        
+
+        h1 span{
+
+          font-weight:400;
+
+        }
+
+        body{
+
+          font-family: "Open Sans", arial;
+
+          color:#fff;
+
+          background: #666c82;  
+
+          margin:0;
+
+        }
+
+        .flex{
+
+          display:flex;
+
+        }
+
+        nav{
+
+          margin-top:15px;
+
+          background:#DAF7A6;
+
+          height:100%;
+
+          width:250px;
+
+          box-shadow:4px 4px 4px #3C3F35;
+
+          border-radius:5px;
+
+          margin-left:1%;
+
+        
+
+          position:sticky;
+
+          position:-webkit-sticky;
+
+          top:20px;
+
+        }
+
+        
+
+        nav a {
+
+          text-decoration:none;
+
+          color:BLACK;
+
+          font-size: 16px;
+
+          display:block;
+
+          border-bottom:1px solid #03A2A2;  
+
+        }
+
+        .fa {
+
+          position: relative;
+
+          top:12px;
+
+          width: 70px;
+
+          height: 36px;
+
+          text-align: center;
+
+          font-size:20px;
+
+        }
+
+        nav span {
+
+          position:relative;
+
+          top:12px;
+
+        }
+
+        .logo{
+
+          position:relative;
+
+          top:0px;
+
+          padding:1px;
+
+          background-color:#CCF581;
+
+          color:#07145D; 
+
+          font-family: 'Big Shoulders Display', cursive;
+
+          text-align:center;
+
+          line-height: 0.8;
+
+        }
+
+        .logo p{
+
+          color:black;
+
+        }
+
+        nav a:hover{
+
+          color:#fff;
+
+          background-color:#3863F4; 
+
+        }
+
+        .contents{
+
+          background-color:#3E414F;
+
+          padding:15px 30px;
+
+          width:75%;
+
+          margin:15px 3%;
+
+         
+
+          box-shadow:4px 4px 4px #3C3F35;
+
+          border-radius:5px;
+
+        }
+
+        
+
+        .contents h3{
+
+          border-bottom: 1px solid grey;
+
+          padding-bottom:10px;
+
+          font-family: 'Shadows Into Light', cursive;
+
+          margin-bottom: 20px
+
+        }
+
+        
+
+        .contents p{
+
+          text-align:justify;
+
+          margin-bottom:50px;
+
+          line-height:2;
+
+        }
+
+        footer{
+
+          background:#323232;
+
+          padding:10px;
+
+          height:25px;
+
+        
+
+        }
+
+        .left{
+
+          float:left;
+
+          margin-left:3%;
+
+        }
+
+        .right{
+
+          display:inline-block;
+
+          float:right;
+
+          margin-right:3%;
+
+        }
+
+        .right a{
+
+          color:white;
+
+          margin-right:8px;
+
+          text-decoration:none;
+
+        }
+
+        .right a:hover{
+
+          border-bottom: 2px solid white;
+
+        }
+
+    </style>
+
+</body>
+</html>
